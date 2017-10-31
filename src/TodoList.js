@@ -5,13 +5,15 @@ class TodoList extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      todos: ['Default todo']
+      todos: [
+        {text: 'Default todo', delete: false}
+      ]
     }
     this.allTodos = this.allTodos.bind(this)
   }
 
   allTodos(newTodo) {
-    this.setState({ todos: [...this.state.todos, newTodo]})
+    this.setState({ todos: [...this.state.todos, { text: newTodo }] })
   }
 
   render() {
@@ -19,7 +21,12 @@ class TodoList extends Component {
       <div>
         <Form allTodos={this.allTodos} />
         {this.state.todos.map((todo) => {
-          return <div>{todo}</div>
+          return (
+            <div>
+              <span>{todo.text}</span>
+              <button>delete</button>
+            </div>
+          )
         })}
       </div>
     )
