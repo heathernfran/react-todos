@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Form from './Form'
 
 class TodoList extends Component {
   constructor(props) {
@@ -6,13 +7,21 @@ class TodoList extends Component {
     this.state = {
       todos: ['Default todo']
     }
+    this.allTodos = this.allTodos.bind(this)
+  }
+
+  allTodos(newTodo) {
+    this.setState({ todos: [...this.state.todos, newTodo]})
   }
 
   render() {
     return (
-      this.state.todos.map((todo) => {
-        return <div>{todo}</div>
-      })
+      <div>
+        <Form allTodos={this.allTodos} />
+        {this.state.todos.map((todo) => {
+          return <div>{todo}</div>
+        })}
+      </div>
     )
   }
 }

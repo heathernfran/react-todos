@@ -11,6 +11,7 @@ class Form extends Component {
   addTodo(e) {
     e.preventDefault()
     let newTodo = e.target.todo.value
+    this.props.allTodos(newTodo)
   }
 
   handleChange(e) {
