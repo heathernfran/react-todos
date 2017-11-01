@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import uuidv4 from 'uuid/v4'
 import Form from './Form'
 
 class TodoList extends Component {
@@ -6,14 +7,18 @@ class TodoList extends Component {
     super(props)
     this.state = {
       todos: [
-        {text: 'Default todo', delete: false}
+        {id: uuidv4(), text: 'Default todo', delete: false}
       ]
     }
     this.allTodos = this.allTodos.bind(this)
   }
 
   allTodos(newTodo) {
-    this.setState({ todos: [...this.state.todos, { text: newTodo }] })
+    this.setState({ todos: [...this.state.todos, { id: uuidv4(), text: newTodo }] })
+  }
+
+  deleteTodo(todo, id) {
+    console.log(todo, id)
   }
 
   render() {
@@ -22,9 +27,9 @@ class TodoList extends Component {
         <Form allTodos={this.allTodos} />
         {this.state.todos.map((todo) => {
           return (
-            <div>
+            <div key={todo.id}>
               <span>{todo.text}</span>
-              <button>delete</button>
+              <button onClick={() => this.deleteTodo(todo.text, todo.id)}>delete</button>
             </div>
           )
         })}
