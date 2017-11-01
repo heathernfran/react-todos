@@ -1,20 +1,20 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-class Form extends Component {
-  addTodo(e) {
+const Form = (props) => {
+  const {allTodos} = props
+
+  let addTodo = (e) => {
     e.preventDefault()
     let newTodo = e.target.todo.value
-    this.props.allTodos(newTodo)
+    allTodos(newTodo)
   }
 
-  render() {
-    return (
-      <form onSubmit={e => this.addTodo(e)}>
-        <input type="text" name="todo" />
-        <button type="submit">+</button>
-      </form>
-    )
-  }
+  return (
+    <form onSubmit={e => addTodo(e)}>
+      <input type="text" name="todo" />
+      <button type="submit">+</button>
+    </form>
+  )
 }
 
 export default Form
