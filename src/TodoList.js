@@ -1,17 +1,26 @@
 import React, { Component } from 'react';
+import uuidv4 from 'uuid/v4'
 import Form from './Form'
 
 class TodoList extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      todos: ['Default todo']
+      todos: [
+        {id: uuidv4(), text: 'Default todo'}
+      ]
     }
     this.allTodos = this.allTodos.bind(this)
   }
 
   allTodos(newTodo) {
-    this.setState({ todos: [...this.state.todos, newTodo]})
+    this.setState({ todos: [...this.state.todos, { id: uuidv4(), text: newTodo }] })
+  }
+
+  deleteTodo(todo, id) {
+    // Look for the the todo that should be deleted, return all other todos.
+    let updatedTodoState = this.state.todos.filter(todo => todo.id != id)
+    this.setState({ todos: updatedTodoState })
   }
 
   render() {
@@ -19,7 +28,12 @@ class TodoList extends Component {
       <div>
         <Form allTodos={this.allTodos} />
         {this.state.todos.map((todo) => {
-          return <div>{todo}</div>
+          return (
+            <div key={todo.id}>
+              <span>{todo.text}</span>
+              <button onClick={() => this.deleteTodo(todo, todo.id)}>delete</button>
+            </div>
+          )
         })}
       </div>
     )
