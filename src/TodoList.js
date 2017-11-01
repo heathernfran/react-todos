@@ -1,4 +1,3 @@
-import _ from 'lodash'
 import React, { Component } from 'react';
 import uuidv4 from 'uuid/v4'
 import Form from './Form'
@@ -19,9 +18,7 @@ class TodoList extends Component {
   }
 
   deleteTodo(todo, id) {
-    // Look for the the todo that should be deleted.
-    let deleteTodo = _.findIndex(this.state.todos, o => o.id === todo.id)
-
+    // Look for the the todo that should be deleted, return all other todos.
     let updatedTodoState = this.state.todos.filter(todo => todo.id != id)
     this.setState({ todos: updatedTodoState })
   }
