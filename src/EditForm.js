@@ -1,21 +1,21 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-class EditForm extends Component {
-  editTodo(e) {
+const EditForm = (props) => {
+  const {todoId, editedTodo} = props
+
+  let editTodo = (e) => {
     e.preventDefault()
-    let id = this.props.todoId
-    let editedTodo = e.target.todo.value
-    this.props.editedTodo(id, editedTodo)
+    let id = todoId
+    let editedText = e.target.todo.value
+    editedTodo(id, editedText)
   }
 
-  render() {
-    return (
-      <form onSubmit={e => this.editTodo(e)}>
-        <input type="text" name="todo" />
-        <button type="submit">update</button>
-      </form>
-    )
-  }
+  return (
+    <form onSubmit={e => editTodo(e)}>
+      <input type="text" name="todo" />
+      <button type="submit">update</button>
+    </form>
+  )
 }
 
 export default EditForm
