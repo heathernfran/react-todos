@@ -36,8 +36,11 @@ class TodoList extends Component {
   toggleEditable(id) {
     let editableTodos = [...this.state.todos]
     let currentTodo = editableTodos.find(todo => todo.id === id)
+
+    // ES7
+    let editedTodo = {...currentTodo, edit: true} //Object.assign({}, currentTodo, {edit: true})
     currentTodo.edit = true
-    this.setState({ todos: editableTodos })
+    this.setState({ todos: editableTodos})
   }
 
   render() {
