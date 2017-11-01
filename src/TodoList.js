@@ -7,7 +7,7 @@ class TodoList extends Component {
     super(props)
     this.state = {
       todos: [
-        {id: uuidv4(), text: 'Default todo', delete: false}
+        {id: uuidv4(), text: 'Default todo'}
       ]
     }
     this.allTodos = this.allTodos.bind(this)
