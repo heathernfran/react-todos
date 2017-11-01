@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import React, { Component } from 'react';
 import uuidv4 from 'uuid/v4'
 import Form from './Form'
@@ -18,7 +19,11 @@ class TodoList extends Component {
   }
 
   deleteTodo(todo, id) {
-    console.log(todo, id)
+    // Look for the the todo that should be deleted.
+    let deleteTodo = _.findIndex(this.state.todos, o => o.id === todo.id)
+
+    let updatedTodoState = this.state.todos.filter(todo => todo.id != id)
+    this.setState({ todos: updatedTodoState })
   }
 
   render() {
@@ -29,7 +34,7 @@ class TodoList extends Component {
           return (
             <div key={todo.id}>
               <span>{todo.text}</span>
-              <button onClick={() => this.deleteTodo(todo.text, todo.id)}>delete</button>
+              <button onClick={() => this.deleteTodo(todo, todo.id)}>delete</button>
             </div>
           )
         })}
