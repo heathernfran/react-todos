@@ -19,12 +19,11 @@ class TodoList extends Component {
 
   deleteTodo(id) {
     // Look for the the todo that should be deleted, return all other todos.
-    let updatedTodoState = this.state.todos.filter(todo => todo.id != id)
+    let updatedTodoState = this.state.todos.filter(todo => todo.id !== id)
     this.setState({ todos: updatedTodoState })
   }
 
   editTodo(id) {
-    // console.log('render form')
     let editableTodos = [...this.state.todos]
     let currentTodo = editableTodos.find(todo => todo.id === id)
     currentTodo.edit = true
