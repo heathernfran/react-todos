@@ -29,6 +29,7 @@ class TodoList extends Component {
     let editableTodos = [...this.state.todos]
     let currentTodo = editableTodos.find(todo => todo.id === id)
     currentTodo.text = text
+    // Close the editing form
     currentTodo.isEditing = false
     this.setState({ todos: editableTodos })
   }
@@ -39,7 +40,11 @@ class TodoList extends Component {
         <Form allTodos={this.allTodos} />
         {this.state.todos.map((todo) => {
           return (
-            <Todo key={todo.id} {...todo} editedTodo={this.editedTodo} />
+            <Todo
+              {...todo}
+              key={todo.id}
+              editedTodo={this.editedTodo}
+            />
           )
         })}
       </div>

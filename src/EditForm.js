@@ -1,6 +1,6 @@
 import React from 'react'
 
-const EditForm = ({ todoId, editedTodo }) => {
+const EditForm = ({ todoId, editedTodo, closeEditForm }) => {
   const editTodo = (e) => {
     e.preventDefault()
     let editedText = e.target.todo.value
