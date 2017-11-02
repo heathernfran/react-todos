@@ -5,6 +5,7 @@ const EditForm = ({ todoId, editedTodo, closeEditForm }) => {
     e.preventDefault()
     let editedText = e.target.todo.value
     editedTodo(todoId, editedText)
+    closeEditForm()
   }
 
   return (

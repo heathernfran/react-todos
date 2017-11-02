@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Delete from './Delete'
 import EditForm from './EditForm'
 
 class Todo extends Component {
@@ -7,6 +8,7 @@ class Todo extends Component {
     this.state = {
       edit: false
     }
+    this.closeEditForm = this.closeEditForm.bind(this)
   }
 
   toggleEditable() {
@@ -23,7 +25,10 @@ class Todo extends Component {
     return (
       <div key={this.props.id}>
         <span>{this.props.text}</span>
-        <button onClick={() => this.deleteTodoProp(this.props.id)}>delete</button>
+        <Delete
+          todoId={this.props.id}
+          deleteTodo={this.props.deleteTodo}
+        />
         <button onClick={() => this.toggleEditable(this.props.id)}>edit</button>
         {/* Toggle form for editing todos */}
         {this.state.edit ?

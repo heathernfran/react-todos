@@ -13,6 +13,7 @@ class TodoList extends Component {
     }
     this.allTodos = this.allTodos.bind(this)
     this.editedTodo = this.editedTodo.bind(this)
+    this.deleteTodo = this.deleteTodo.bind(this)
   }
 
   allTodos(newTodo) {
@@ -44,6 +45,7 @@ class TodoList extends Component {
               {...todo}
               key={todo.id}
               editedTodo={this.editedTodo}
+              deleteTodo={this.deleteTodo}
             />
           )
         })}
