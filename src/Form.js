@@ -1,9 +1,7 @@
 import React from 'react'
 
-const Form = (props) => {
-  const {allTodos} = props
-
-  let addTodo = (e) => {
+const Form = ({allTodos}) => {
+  const addTodo = (e) => {
     e.preventDefault()
     let newTodo = e.target.todo.value
     allTodos(newTodo)
