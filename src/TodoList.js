@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import uuidv4 from 'uuid/v4'
-import EditForm from './EditForm'
 import Form from './Form'
+import Todo from './Todo'
 
 class TodoList extends Component {
   constructor(props) {
@@ -49,13 +49,7 @@ class TodoList extends Component {
         <Form allTodos={this.allTodos} />
         {this.state.todos.map((todo) => {
           return (
-            <div key={todo.id}>
-              <span>{todo.text}</span>
-              <button onClick={() => this.deleteTodo(todo.id)}>delete</button>
-              <button onClick={() => this.toggleEditable(todo.id)}>edit</button>
-              {/* Toggle form for editing todos */}
-              {todo.edit ? <EditForm todoId={todo.id} editedTodo={this.editedTodo} /> : null}
-            </div>
+            <Todo key={todo.id} {...todo} />
           )
         })}
       </div>
