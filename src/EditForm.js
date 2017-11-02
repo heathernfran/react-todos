@@ -1,13 +1,10 @@
 import React from 'react'
 
-const EditForm = (props) => {
-  const {todoId, editedTodo} = props
-
-  let editTodo = (e) => {
+const EditForm = ({ todoId, editedTodo }) => {
+  const editTodo = (e) => {
     e.preventDefault()
-    let id = todoId
     let editedText = e.target.todo.value
-    editedTodo(id, editedText)
+    editedTodo(todoId, editedText)
   }
 
   return (
