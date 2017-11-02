@@ -22,7 +22,7 @@ class Todo extends Component {
         <button onClick={() => this.deleteTodoProp(this.props.id)}>delete</button>
         <button onClick={() => this.toggleEditable(this.props.id)}>edit</button>
         {/* Toggle form for editing todos */}
-        {this.state.edit ? <EditForm todoId={this.props.id} editedTodo={this.editedTodo} /> : null}
+        {this.state.edit ? <EditForm todoId={this.props.id} editedTodo={this.props.editedTodo} /> : null}
       </div>
     )
   }

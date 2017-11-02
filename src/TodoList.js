@@ -8,7 +8,7 @@ class TodoList extends Component {
     super(props)
     this.state = {
       todos: [
-        {id: uuidv4(), text: 'Default todo'}
+        {id: uuidv4(), text: 'Default todo', isEditing: false}
       ],
     }
     this.allTodos = this.allTodos.bind(this)
@@ -29,7 +29,7 @@ class TodoList extends Component {
     let editableTodos = [...this.state.todos]
     let currentTodo = editableTodos.find(todo => todo.id === id)
     currentTodo.text = text
-    currentTodo.edit = false
+    currentTodo.isEditing = false
     this.setState({ todos: editableTodos })
   }
 
@@ -39,7 +39,7 @@ class TodoList extends Component {
         <Form allTodos={this.allTodos} />
         {this.state.todos.map((todo) => {
           return (
-            <Todo key={todo.id} {...todo} />
+            <Todo key={todo.id} {...todo} editedTodo={this.editedTodo} />
           )
         })}
       </div>
