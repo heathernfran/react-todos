@@ -8,7 +8,7 @@ class TodoList extends Component {
     super(props)
     this.state = {
       todos: [
-        {id: uuidv4(), text: 'Default todo', edit: false}
+        {id: uuidv4(), text: 'Default todo'}
       ],
     }
     this.allTodos = this.allTodos.bind(this)
@@ -31,16 +31,6 @@ class TodoList extends Component {
     currentTodo.text = text
     currentTodo.edit = false
     this.setState({ todos: editableTodos })
-  }
-
-  toggleEditable(id) {
-    let editableTodos = [...this.state.todos]
-    let currentTodo = editableTodos.find(todo => todo.id === id)
-
-    // ES7
-    let editedTodo = {...currentTodo, edit: true} //Object.assign({}, currentTodo, {edit: true})
-    currentTodo.edit = true
-    this.setState({ todos: editableTodos})
   }
 
   render() {
