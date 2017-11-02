@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 import uuidv4 from 'uuid/v4'
-import EditForm from './EditForm'
 import Form from './Form'
+import Todo from './Todo'
 
 class TodoList extends Component {
   constructor(props) {
     super(props)
     this.state = {
       todos: [
-        {id: uuidv4(), text: 'Default todo', edit: false}
+        {id: uuidv4(), text: 'Default todo', isEditing: false}
       ],
     }
     this.allTodos = this.allTodos.bind(this)
     this.editedTodo = this.editedTodo.bind(this)
+    this.deleteTodo = this.deleteTodo.bind(this)
   }
 
   allTodos(newTodo) {
@@ -29,18 +30,9 @@ class TodoList extends Component {
     let editableTodos = [...this.state.todos]
     let currentTodo = editableTodos.find(todo => todo.id === id)
     currentTodo.text = text
-    currentTodo.edit = false
+    // Close the editing form
+    currentTodo.isEditing = false
     this.setState({ todos: editableTodos })
-  }
-
-  toggleEditable(id) {
-    let editableTodos = [...this.state.todos]
-    let currentTodo = editableTodos.find(todo => todo.id === id)
-
-    // ES7
-    let editedTodo = {...currentTodo, edit: true} //Object.assign({}, currentTodo, {edit: true})
-    currentTodo.edit = true
-    this.setState({ todos: editableTodos})
   }
 
   render() {
@@ -49,13 +41,12 @@ class TodoList extends Component {
         <Form allTodos={this.allTodos} />
         {this.state.todos.map((todo) => {
           return (
-            <div key={todo.id}>
-              <span>{todo.text}</span>
-              <button onClick={() => this.deleteTodo(todo.id)}>delete</button>
-              <button onClick={() => this.toggleEditable(todo.id)}>edit</button>
-              {/* Toggle form for editing todos */}
-              {todo.edit ? <EditForm todoId={todo.id} editedTodo={this.editedTodo} /> : null}
-            </div>
+            <Todo
+              {...todo}
+              key={todo.id}
+              editedTodo={this.editedTodo}
+              deleteTodo={this.deleteTodo}
+            />
           )
         })}
       </div>
