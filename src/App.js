@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import TodoList from './TodoList'
+import TodoListStateless from './TodoListStateless'
 import './App.css';
 
 class App extends Component {
@@ -9,7 +9,7 @@ class App extends Component {
         <header>
           Todos
         </header>
-        <TodoList />
+        <TodoListStateless />
       </div>
     );
   }
