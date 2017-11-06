@@ -40,10 +40,7 @@ const todoApp = (state = initialState, action) => {
       })}
     case DELETE_TODO:
       console.log('delete todo', state, action)
-      return {...state, todos: state.todos.filter((todo, index) => {
-        if (index !== action.index) return todo
-        })
-      }
+      return {...state, todos: state.todos.filter((todo, index) => index !== action.index)}
     default:
       console.log(state, action)
       return state
