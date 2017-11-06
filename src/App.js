@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Form from './Form'
 import TodoListStateless from './TodoListStateless'
 import './App.css';
 
@@ -9,6 +10,7 @@ class App extends Component {
         <header>
           Todos
         </header>
+        <Form />
         <TodoListStateless />
       </div>
     );
