@@ -1,18 +1,23 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { addTodo } from './actions'
 
-const Form = ({allTodos}) => {
-  const addTodo = (e) => {
+const Form = ({ dispatch }) => {
+  const handleSubmit = (e) => {
+    console.log(e)
     e.preventDefault()
     let newTodo = e.target.todo.value
-    allTodos(newTodo)
+    dispatch(addTodo(newTodo))
   }
 
   return (
-    <form onSubmit={e => addTodo(e)}>
+    <form onSubmit={e => handleSubmit(e)}>
       <input type="text" name="todo" />
       <button type="submit">+</button>
     </form>
   )
 }
 
-export default Form
+const ConnectedForm = connect()(Form)
+
+export default ConnectedForm

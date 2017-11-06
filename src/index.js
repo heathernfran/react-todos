@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import todoApp from './reducers'
 import {
@@ -24,5 +25,10 @@ store.dispatch(editTodo('test editing', true))
 store.dispatch(deleteTodo(0))
 console.log(store.getState())
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+);
 registerServiceWorker();
