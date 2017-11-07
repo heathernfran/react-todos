@@ -22,20 +22,15 @@ const todoApp = (state = initialState, action) => {
           }]}
     case TOGGLE_EDIT:
       console.log('toggle edit', state, action)
-      return {...state, todos: state.todos.map((todo) => {
-        if (todo === action.todo) {
-          return {...todo, isEditing: !todo.isEditing}
-        }
-        return todo
-      })}
+      return {...state, todos: state.todos.map(todo =>
+        todo.id === action.id ?
+          { ...todo, isEditing: !todo.isEditing } : todo
+      )}
     case EDIT_TODO:
       console.log('edit todo', state, action)
       return {...state, todos: state.todos.map(todo =>
         todo.id === action.id ?
-        { ...todo,
-          text: action.text,
-          isEditing: false
-        } : todo
+          { ...todo, text: action.text, isEditing: false } : todo
       )}
     case DELETE_TODO:
       console.log('delete todo', state, action)

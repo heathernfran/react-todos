@@ -11,10 +11,11 @@ export const addTodo = (id, text) => {
   }
 }
 
-export const toggleEdit = id => {
+export const toggleEdit = (id, isEditing) => {
   return {
     type: TOGGLE_EDIT,
-    id
+    id,
+    isEditing
   }
 }
 
