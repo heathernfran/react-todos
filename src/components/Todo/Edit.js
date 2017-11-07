@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { editTodo } from '../actions'
+import { editTodo } from '../../actions'
 
 const mapDispatchToProps = dispatch => ({
   handleSubmit(id, text) {

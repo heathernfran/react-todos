@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { deleteTodo } from '../actions'
+import { deleteTodo } from '../../actions'
 
 const mapDispatchToProps = dispatch => ({
   handleClick(id) {
