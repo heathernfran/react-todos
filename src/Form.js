@@ -3,22 +3,25 @@ import uuidv4 from 'uuid/v4'
 import { connect } from 'react-redux'
 import { addTodo } from './actions'
 
-const Form = ({ dispatch }) => {
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    let newTodo = e.target.todo.value
-    let newId = uuidv4()
-    dispatch(addTodo(newId, newTodo))
+const mapDispatchToProps = dispatch => ({
+  handleSubmit(id, text) {
+    dispatch(addTodo(id, text))
   }
+})
 
-  return (
-    <form onSubmit={e => handleSubmit(e)}>
-      <input type="text" name="todo" />
-      <button type="submit">+</button>
-    </form>
-  )
-}
+const Form = ({ handleSubmit }) => (
+  <form onSubmit={e => {
+    e.preventDefault()
+    handleSubmit(uuidv4(), e.target.todo.value)
+  }}>
+    <input type="text" name="todo" />
+    <button type="submit">+</button>
+  </form>
+)
 
-const ConnectedForm = connect()(Form)
+const ConnectedForm = connect(
+  null,
+  mapDispatchToProps
+)(Form)
 
 export default ConnectedForm
