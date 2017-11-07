@@ -1,9 +1,13 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { deleteTodo } from './actions'
 
-const Delete = ({ todoId, deleteTodo }) => {
-  const deletingTodo = () => deleteTodo(todoId)
+const Delete = ({ dispatch, todoId }) => {
+  const handleClick = () => dispatch(deleteTodo(todoId))
 
-  return <button onClick={() => deletingTodo()}>delete</button>
+  return <button onClick={() => handleClick()}>delete</button>
 }
 
-export default Delete
+const ConnectedDelete = connect()(Delete)
+
+export default ConnectedDelete

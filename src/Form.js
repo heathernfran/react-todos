@@ -1,18 +1,24 @@
 import React from 'react'
+import uuidv4 from 'uuid/v4'
+import { connect } from 'react-redux'
+import { addTodo } from './actions'
 
-const Form = ({allTodos}) => {
-  const addTodo = (e) => {
+const Form = ({ dispatch }) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
     let newTodo = e.target.todo.value
-    allTodos(newTodo)
+    let newId = uuidv4()
+    dispatch(addTodo(newId, newTodo))
   }
 
   return (
-    <form onSubmit={e => addTodo(e)}>
+    <form onSubmit={e => handleSubmit(e)}>
       <input type="text" name="todo" />
       <button type="submit">+</button>
     </form>
   )
 }
 
-export default Form
+const ConnectedForm = connect()(Form)
+
+export default ConnectedForm
