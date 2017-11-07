@@ -19,7 +19,7 @@ let store = createStore(todoApp)
 // Testing store logic
 console.log(store)
 console.log(store.getState())
-store.dispatch(addTodo('another todo'))
+store.dispatch(addTodo('2', 'another todo'))
 store.dispatch(toggleEdit(true))
 store.dispatch(editTodo('test editing', true))
 store.dispatch(deleteTodo(0))

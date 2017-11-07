@@ -6,7 +6,7 @@ import {
  } from './actions'
 
 const initialState = {
-  todos: [{text: 'initial todo', isEditing: false}]
+  todos: [{id: '1', text: 'initial todo', isEditing: false}]
 }
 
 const todoApp = (state = initialState, action) => {

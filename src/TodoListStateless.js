@@ -9,6 +9,7 @@ const TodoListStateless = ({ todos }) => (
     {todos.map(todo => (
       <TodoStateless
         {...todo}
+        key={todo.id}
       />
     ))}
   </div>

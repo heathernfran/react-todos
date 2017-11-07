@@ -1,13 +1,14 @@
 import React from 'react'
+import uuidv4 from 'uuid/v4'
 import { connect } from 'react-redux'
 import { addTodo } from './actions'
 
 const Form = ({ dispatch }) => {
   const handleSubmit = (e) => {
-    console.log(e)
     e.preventDefault()
     let newTodo = e.target.todo.value
-    dispatch(addTodo(newTodo))
+    let newId = uuidv4()
+    dispatch(addTodo(newId, newTodo))
   }
 
   return (
