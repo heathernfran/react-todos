@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Form from './Form'
-import TodoListStateless from './TodoListStateless'
+import TodoList from './TodoList'
 import './App.css';
 
 class App extends Component {
@@ -11,7 +11,7 @@ class App extends Component {
           Todos
         </header>
         <Form />
-        <TodoListStateless />
+        <TodoList />
       </div>
     );
   }
