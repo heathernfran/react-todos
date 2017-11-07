@@ -10,13 +10,12 @@ const TodoStateless = ({ id, isEditable, text }) => (
       todoId={id}
     />
     {/* Toggle form for editing todos */}
-    {isEditable ?
-      <EditForm
-        todoId={id}
-      /> : null}
+    <EditForm
+      todoId={id}
+    />
   </div>
 )
 
 const ConnectedTodoStateless = connect()(TodoStateless)
 
-export default TodoStateless
+export default ConnectedTodoStateless

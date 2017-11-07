@@ -11,20 +11,22 @@ export const addTodo = (id, text) => {
   }
 }
 
-export const toggleEdit = () => {
+export const toggleEdit = id => {
   return {
     type: TOGGLE_EDIT,
+    id
   }
 }
 
-export const editTodo = (text) => {
+export const editTodo = (id, text) => {
   return {
     type: EDIT_TODO,
+    id,
     text
   }
 }
 
-export const deleteTodo = (id) => {
+export const deleteTodo = id => {
   return {
     type: DELETE_TODO,
     id

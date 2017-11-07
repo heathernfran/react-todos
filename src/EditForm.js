@@ -1,19 +1,22 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { editTodo } from './actions'
 
-const EditForm = ({ todoId, editedTodo, closeEditForm }) => {
-  const editTodo = (e) => {
+const EditForm = ({ dispatch, todoId }) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
     let editedText = e.target.todo.value
-    editedTodo(todoId, editedText)
-    closeEditForm()
+    dispatch(editTodo(todoId, editedText))
   }
 
   return (
-    <form onSubmit={e => editTodo(e)}>
+    <form onSubmit={e => handleSubmit(e)}>
       <input type="text" name="todo" />
       <button type="submit">update</button>
     </form>
   )
 }
 
-export default EditForm
+const ConnectedEditForm = connect()(EditForm)
+
+export default ConnectedEditForm

@@ -30,15 +30,13 @@ const todoApp = (state = initialState, action) => {
       })}
     case EDIT_TODO:
       console.log('edit todo', state, action)
-      return {...state, todos: state.todos.map((todo, index) => {
-        if (index === action.index) {
-          return {...todo, todo: {
-            text: action.text,
-            isEditing: false
-          }}
-        }
-        return todo
-      })}
+      return {...state, todos: state.todos.map(todo =>
+        todo.id === action.id ?
+        { ...todo,
+          text: action.text,
+          isEditing: false
+        } : todo
+      )}
     case DELETE_TODO:
       console.log('delete todo', state, action)
       return {...state, todos: state.todos.filter(todo => todo.id !== action.id)}
