@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Todo from './Todo'
+import Todo from '../components/Todo'
 
 const mapStateToProps = state => ({ todos: state.todos })
 

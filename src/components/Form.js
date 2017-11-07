@@ -1,7 +1,7 @@
 import React from 'react'
 import uuidv4 from 'uuid/v4'
 import { connect } from 'react-redux'
-import { addTodo } from './actions'
+import { addTodo } from '../actions'
 
 const mapDispatchToProps = dispatch => ({
   handleSubmit(id, text) {

@@ -11,7 +11,7 @@ import {
 } from './actions'
 
 import './index.css';
-import App from './App';
+import App from './containers/App';
 import registerServiceWorker from './registerServiceWorker';
 
 let store = createStore(todoApp)
