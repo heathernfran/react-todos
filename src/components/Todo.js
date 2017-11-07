@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { toggleEdit } from '../actions'
 import Delete from './Delete'
-import EditForm from './EditForm'
+import Edit from './Edit'
 
 const mapDispatchToProps = dispatch => ({
   handleClick(id, isEditing) {
@@ -19,7 +19,7 @@ const Todo = ({ handleClick, id, isEditing, text }) => (
     {/* Toggle form for editing todos */}
     <button onClick={() => handleClick(id, isEditing)}>edit</button>
     {isEditing ?
-      <EditForm
+      <Edit
         todoId={id}
       /> : null
     }

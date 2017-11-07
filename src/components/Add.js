@@ -9,7 +9,7 @@ const mapDispatchToProps = dispatch => ({
   }
 })
 
-const Form = ({ handleSubmit }) => (
+const Add = ({ handleSubmit }) => (
   <form onSubmit={e => {
     e.preventDefault()
     handleSubmit(uuidv4(), e.target.todo.value)
@@ -19,9 +19,9 @@ const Form = ({ handleSubmit }) => (
   </form>
 )
 
-const ConnectedForm = connect(
+const ConnectedAdd = connect(
   null,
   mapDispatchToProps
-)(Form)
+)(Add)
 
-export default ConnectedForm
+export default ConnectedAdd

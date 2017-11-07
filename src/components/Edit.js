@@ -8,7 +8,7 @@ const mapDispatchToProps = dispatch => ({
   }
 })
 
-const EditForm = ({ handleSubmit, todoId }) => (
+const Edit = ({ handleSubmit, todoId }) => (
   <form onSubmit={e => {
     e.preventDefault()
     handleSubmit(todoId, e.target.todo.value)
@@ -18,9 +18,9 @@ const EditForm = ({ handleSubmit, todoId }) => (
   </form>
 )
 
-const ConnectedEditForm = connect(
+const ConnectedEdit = connect(
   null,
   mapDispatchToProps
-)(EditForm)
+)(Edit)
 
-export default ConnectedEditForm
+export default ConnectedEdit
