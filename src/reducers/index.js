@@ -3,7 +3,7 @@ import {
   DELETE_TODO,
   EDIT_TODO,
   TOGGLE_EDIT
- } from './actions'
+ } from '../actions'
 
 const initialState = {
   todos: [{id: '1', text: 'initial todo', isEditing: false}]
