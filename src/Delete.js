@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 import { deleteTodo } from './actions'
 
 const Delete = ({ dispatch, todoId }) => {
-  const deletingTodo = () => dispatch(deleteTodo(todoId))
+  const handleClick = () => dispatch(deleteTodo(todoId))
 
-  return <button onClick={() => deletingTodo()}>delete</button>
+  return <button onClick={() => handleClick()}>delete</button>
 }
 
 const ConnectedDelete = connect()(Delete)

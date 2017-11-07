@@ -16,6 +16,7 @@ const todoApp = (state = initialState, action) => {
       return {
         ...state, todos: [
           ...state.todos, {
+            id: action.id,
             text: action.text,
             isEditing: false
           }]}
@@ -40,7 +41,7 @@ const todoApp = (state = initialState, action) => {
       })}
     case DELETE_TODO:
       console.log('delete todo', state, action)
-      return {...state, todos: state.todos.filter((todo, index) => index !== action.index)}
+      return {...state, todos: state.todos.filter(todo => todo.id !== action.id)}
     default:
       console.log(state, action)
       return state
