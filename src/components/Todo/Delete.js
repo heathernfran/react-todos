@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { func, string } from 'prop-types'
 import { deleteTodo } from '../../actions'
 
 const mapStateToProps = state => ({
@@ -12,6 +13,11 @@ const mapDispatchToProps = dispatch => ({
 })
 
 const Delete = ({ handleClick, todoId }) => <button onClick={() => handleClick(todoId)}>delete</button>
+
+Delete.propTypes = {
+  handleClick: func.isRequired,
+  todoId: string.isRequired
+}
 
 const ConnectedDelete = connect(
   mapStateToProps,

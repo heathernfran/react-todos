@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { func, string } from 'prop-types'
 import { editTodo } from '../../actions'
 
 const mapStateToProps = state => ({
@@ -22,6 +23,11 @@ const Edit = ({ handleSubmit, todoId }) => (
     <button type="submit">update</button>
   </form>
 )
+
+Edit.propTypes = {
+  handleSubmit: func.isRequired,
+  todoId: string.isRequired
+}
 
 const ConnectedEdit = connect(
   mapStateToProps,

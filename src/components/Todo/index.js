@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { bool, func, string } from 'prop-types'
 import { toggleEdit } from '../../actions'
 import Delete from './Delete'
 import Edit from './Edit'
@@ -26,6 +27,13 @@ const Todo = ({ handleClick, id, isEditing, text }) => (
     }
   </div>
 )
+
+Todo.propTypes = {
+  isEditing: bool.isRequired,
+  handleClick: func.isRequired,
+  id: string.isRequired,
+  text: string.isRequired
+}
 
 const ConnectedTodo = connect(
   mapStateToProps,
