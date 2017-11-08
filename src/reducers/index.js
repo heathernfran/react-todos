@@ -1,3 +1,4 @@
+import { combineReducers } from 'redux'
 import {
   ADD_TODO,
   DELETE_TODO,
@@ -5,40 +6,34 @@ import {
   TOGGLE_EDIT
  } from '../actions'
 
-const initialState = {
-  todos: [{id: '1', text: 'initial todo', isEditing: false}]
-}
-
-const todoApp = (state = initialState, action) => {
+const todos = (state = [], action = {}) => {
   switch (action.type) {
-    case ADD_TODO:
-      console.log('add todo', state, action)
-      return {
-        ...state, todos: [
-          ...state.todos, {
-            id: action.id,
-            text: action.text,
-            isEditing: false
-          }]}
-    case TOGGLE_EDIT:
-      console.log('toggle edit', state, action)
-      return {...state, todos: state.todos.map(todo =>
-        todo.id === action.id ?
-          { ...todo, isEditing: !todo.isEditing } : todo
-      )}
-    case EDIT_TODO:
-      console.log('edit todo', state, action)
-      return {...state, todos: state.todos.map(todo =>
-        todo.id === action.id ?
-          { ...todo, text: action.text, isEditing: false } : todo
-      )}
-    case DELETE_TODO:
-      console.log('delete todo', state, action)
-      return {...state, todos: state.todos.filter(todo => todo.id !== action.id)}
-    default:
-      console.log(state, action)
-      return state
+  case ADD_TODO:
+    return [...state, {
+        id: action.id,
+        text: action.text,
+        isEditing: false
+    }]
+  case TOGGLE_EDIT:
+    return [...state.map(todo =>
+      todo.id === action.id ?
+        { ...todo, isEditing: !todo.isEditing } : todo
+    )]
+  case EDIT_TODO:
+    return [...state.map(todo =>
+      todo.id === action.id ?
+        { ...todo, text: action.text, isEditing: false } : todo
+    )]
+  case DELETE_TODO:
+    return [...state.filter(todo => todo.id !== action.id)]
+  default:
+    return state
   }
 }
 
-export default todoApp
+
+const app = combineReducers({
+  todos
+})
+
+export default app

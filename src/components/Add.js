@@ -3,6 +3,10 @@ import uuidv4 from 'uuid/v4'
 import { connect } from 'react-redux'
 import { addTodo } from '../actions'
 
+const mapStateToProps = state => ({
+  id: state.id,
+  text: state.text,
+})
 const mapDispatchToProps = dispatch => ({
   handleSubmit(id, text) {
     dispatch(addTodo(id, text))
@@ -20,7 +24,7 @@ const Add = ({ handleSubmit }) => (
 )
 
 const ConnectedAdd = connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Add)
 
