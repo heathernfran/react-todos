@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { arrayOf, object } from 'prop-types'
 import Todo from '../components/Todo'
 
 const mapStateToProps = state => ({ todos: state.todos })
@@ -14,6 +15,10 @@ const TodoList = ({ todos }) => (
     ))}
   </div>
 )
+
+TodoList.propTypes = {
+  todos: arrayOf(object).isRequired
+}
 
 const ConnectedTodoList = connect(
   mapStateToProps
