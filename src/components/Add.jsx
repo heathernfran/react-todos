@@ -1,5 +1,6 @@
 import React from 'react'
 import uuidv4 from 'uuid/v4'
+import { func } from 'prop-types'
 import { connect } from 'react-redux'
 import { addTodo } from '../actions'
 
@@ -22,6 +23,10 @@ const Add = ({ handleSubmit }) => (
     <button type="submit">+</button>
   </form>
 )
+
+Add.propTypes = {
+  handleSubmit: func.isRequired
+}
 
 const ConnectedAdd = connect(
   mapStateToProps,
