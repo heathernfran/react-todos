@@ -1,4 +1,6 @@
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css'
+
 import Add from '../components/Add'
 import TodoList from './TodoList'
 import './App.scss';
