@@ -2,6 +2,7 @@ import React from 'react'
 import uuidv4 from 'uuid/v4'
 import { func } from 'prop-types'
 import { connect } from 'react-redux'
+import { Button } from 'react-bootstrap'
 import { addTodo } from '../actions'
 
 const mapStateToProps = state => ({
@@ -20,7 +21,7 @@ const Add = ({ handleSubmit }) => (
     handleSubmit(uuidv4(), e.target.todo.value)
   }}>
     <input type="text" name="todo" />
-    <button type="submit">+</button>
+    <Button bsStyle='primary' type="submit">+</Button>
   </form>
 )
 
