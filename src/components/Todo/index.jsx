@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { bool, func, string } from 'prop-types'
-import { toggleEdit } from './../../todo'
+import { toggleEdit } from '../../todo/actions'
 import Delete from './Delete'
 import Edit from './Edit'
 

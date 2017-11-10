@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { func, string } from 'prop-types'
-import { editTodo } from '../../actions'
+import { editTodo } from '../../todo/actions'
 
 const mapStateToProps = state => ({
   id: state.id,

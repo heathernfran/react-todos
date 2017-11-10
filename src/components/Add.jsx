@@ -3,7 +3,7 @@ import uuidv4 from 'uuid/v4'
 import { func } from 'prop-types'
 import { connect } from 'react-redux'
 import { Button } from 'react-bootstrap'
-import { addTodo } from '../actions'
+import { addTodo } from '../todo/actions'
 
 const mapStateToProps = state => ({
   id: state.id,
