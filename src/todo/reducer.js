@@ -4,7 +4,7 @@ import {
   DELETE_TODO,
   EDIT_TODO,
   TOGGLE_EDIT
- } from '../actions'
+ } from './actions'
 
 const todos = (state = [], action = {}) => {
   switch (action.type) {
@@ -32,8 +32,8 @@ const todos = (state = [], action = {}) => {
 }
 
 
-const app = combineReducers({
+const reducer = combineReducers({
   todos
 })
 
-export default app
+export default reducer
