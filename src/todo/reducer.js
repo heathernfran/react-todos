@@ -4,7 +4,15 @@ import {
   DELETE_TODO,
   EDIT_TODO,
   TOGGLE_EDIT
- } from './actions'
+} from './actions'
+
+export const getTodos = state => state.todos
+
+export const getId = state => state.id
+export const getIsEditing = state => state.isEditing
+export const getText = state => state.text
+
+export const getToggleEdit = state => !state.isEditing
 
 const todos = (state = [], action = {}) => {
   switch (action.type) {

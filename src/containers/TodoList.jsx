@@ -2,8 +2,11 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { arrayOf, object } from 'prop-types'
 import Todo from '../components/Todo'
+import { getTodos } from '../todo/reducer'
 
-const mapStateToProps = state => ({ todos: state.todos })
+const mapStateToProps = state => ({
+  todos: getTodos(state)
+})
 
 const TodoList = ({ todos }) => (
   <div>

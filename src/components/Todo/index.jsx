@@ -2,10 +2,14 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { bool, func, string } from 'prop-types'
 import { toggleEdit } from '../../todo/actions'
+import { getToggleEdit } from '../../todo/reducer'
 import Delete from './Delete'
 import Edit from './Edit'
 
-const mapStateToProps = state => ({ todos: state.todos })
+const mapStateToProps = state => ({
+  isEditing: getToggleEdit(!state.isEditing)
+})
+
 const mapDispatchToProps = dispatch => ({
   handleClick(id, isEditing) {
     dispatch(toggleEdit(id, isEditing))
