@@ -1,27 +1,39 @@
-export const ADD_TODO = 'ADD_TODO'
-export const TOGGLE_EDIT = 'TOGGLE_EDIT'
-export const EDIT_TODO = 'EDIT_TODO'
-export const DELETE_TODO = 'DELETE_TODO'
+import * as types from './types'
 
-export const addTodo = (id, text) => ({
-  type: ADD_TODO,
-  id,
-  text
+const addTodo = (id, text) => ({
+  type: types.ADD_TODO,
+  payload: {
+    id,
+    text
+  }
 })
 
-export const toggleEdit = (id, isEditing) => ({
-  type: TOGGLE_EDIT,
-  id,
-  isEditing
+const toggleEdit = (id, isEditing) => ({
+  type: types.TOGGLE_EDIT,
+  payload: {
+    id,
+    isEditing
+  }
 })
 
-export const editTodo = (id, text) => ({
-  type: EDIT_TODO,
-  id,
-  text
+const editTodo = (id, text) => ({
+  type: types.EDIT_TODO,
+  payload: {
+    id,
+    text
+  }
 })
 
-export const deleteTodo = id => ({
-  type: DELETE_TODO,
-  id
+const deleteTodo = id => ({
+  type: types.DELETE_TODO,
+  payload: {
+    id
+  }
 })
+
+export {
+  addTodo,
+  toggleEdit,
+  editTodo,
+  deleteTodo
+}

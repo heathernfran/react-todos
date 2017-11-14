@@ -1,47 +1,55 @@
-import { combineReducers } from 'redux'
-import {
-  ADD_TODO,
-  DELETE_TODO,
-  EDIT_TODO,
-  TOGGLE_EDIT
-} from './actions'
+import * as types from './types'
 
-export const getTodos = state => state.todos
+/* State shape
+{
+  id: string,
+  text: string,
+  isEditing: bool
+}
+*/
+
+const getInitialEdit = state => {
+  const newState = { ...state };
+  newState.isEditing = false;
+  return newState.isEditing;
+}
+
+export const getToggleEdit = state => {
+  const newState = { ...state }
+  newState.isEditing = !newState.isEditing
+  return newState.isEditing
+}
+
+export const getTodos = state => state
 
 export const getId = state => state.id
 export const getIsEditing = state => state.isEditing
 export const getText = state => state.text
 
-export const getToggleEdit = state => !state.isEditing
 
 const todos = (state = [], action = {}) => {
   switch (action.type) {
-  case ADD_TODO:
+  case types.ADD_TODO:
     return [...state, {
-        id: action.id,
-        text: action.text,
-        isEditing: false
+        id: action.payload.id,
+        text: action.payload.text,
+        isEditing: getInitialEdit(state)
     }]
-  case TOGGLE_EDIT:
+  case types.TOGGLE_EDIT:
     return [...state.map(todo =>
-      todo.id === action.id ?
-        { ...todo, isEditing: !todo.isEditing } : todo
+      todo.id === action.payload.id ?
+        { ...todo, isEditing: getToggleEdit(todo) } : todo
     )]
-  case EDIT_TODO:
+  case types.EDIT_TODO:
     return [...state.map(todo =>
-      todo.id === action.id ?
-        { ...todo, text: action.text, isEditing: false } : todo
+      todo.id === action.payload.id ?
+        { ...todo, text: action.payload.text, isEditing: getToggleEdit(todo) } : todo
     )]
-  case DELETE_TODO:
-    return [...state.filter(todo => todo.id !== action.id)]
+  case types.DELETE_TODO:
+    return [...state.filter(todo => todo.id !== action.payload.id)]
   default:
     return state
   }
 }
 
-
-const reducer = combineReducers({
-  todos
-})
-
-export default reducer
+export default todos
