@@ -1,0 +1,11 @@
+const ADD_TODO = "ADD_TODO";
+const TOGGLE_EDIT = "TOGGLE_EDIT";
+const EDIT_TODO = "EDIT_TODO";
+const DELETE_TODO = "DELETE_TODO";
+
+export {
+  ADD_TODO,
+  TOGGLE_EDIT,
+  EDIT_TODO,
+  DELETE_TODO
+}

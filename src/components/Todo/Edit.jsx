@@ -1,12 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { func, string } from 'prop-types'
-import { editTodo } from '../../actions'
+import { editTodo } from '../../todo/actions'
+import { getId, getText, getToggleEdit } from '../../todo/reducer'
 
 const mapStateToProps = state => ({
-  id: state.id,
-  text: state.text,
-  isEditing: state.isEditing
+  id: getId(state),
+  text: getText(state),
+  isEditing: getToggleEdit(state)
 })
 const mapDispatchToProps = dispatch => ({
   handleSubmit(id, text) {

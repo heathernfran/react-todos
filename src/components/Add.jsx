@@ -3,11 +3,12 @@ import uuidv4 from 'uuid/v4'
 import { func } from 'prop-types'
 import { connect } from 'react-redux'
 import { Button } from 'react-bootstrap'
-import { addTodo } from '../actions'
+import { addTodo } from '../todo/actions'
+import { getId, getText } from '../todo/reducer'
 
 const mapStateToProps = state => ({
-  id: state.id,
-  text: state.text,
+  id: getId(state),
+  text: getText(state)
 })
 const mapDispatchToProps = dispatch => ({
   handleSubmit(id, text) {
