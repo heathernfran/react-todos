@@ -6,8 +6,8 @@ import { getToggleEdit } from '../../todo/reducer'
 import Delete from './Delete'
 import Edit from './Edit'
 
-const mapStateToProps = state => ({
-  isEditing: getToggleEdit(!state.isEditing)
+const mapStateToProps = (state) => ({
+  isEditing: getToggleEdit(state, state.id)
 })
 
 const mapDispatchToProps = dispatch => ({

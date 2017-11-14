@@ -2,9 +2,10 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { func, string } from 'prop-types'
 import { deleteTodo } from '../../todo/actions'
+import { getId } from '../../todo/reducer'
 
 const mapStateToProps = state => ({
-  id: state.id
+  id: getId(state)
 })
 const mapDispatchToProps = dispatch => ({
   handleClick(id) {
